@@ -60,20 +60,27 @@ int main(void) {
 	//set btns as inputs
 	PORTDSET = 0x00e0;
 	
-	
+	// starts and updates the OLED-screen
 	display_init();
 	display_update();
 
+	//index for the next shape
 	uint8_t index_for_shape = 2;
+	//gives correct data to the shapes
 	shape_init(0,0);
+	// gives "dis_array" a frame around the gamefiled
 	display_frame();
+	//"obj" is the placeholder for the current shape
 	obj = T0;
+	// distpalys the current shape on the gamefiled
 	display_shape();
+	//stesup timer and interrupt
 	timer_setup();
 	
 	while(game)		
 	{
 	
+		// if current shape can't move down, a new shape is displayed on the gamefiled
 		if(new_shape_flag == 1){
 			go_left_flag = 0;
 			go_right_flag = 0;
@@ -85,17 +92,19 @@ int main(void) {
 			if(index_for_shape > 7)
 				index_for_shape = 1;
 
+			// if the new shape can't move down directly after it has been displayed, the game is over.
 			if( collision_check_down() )
 			{ game = 0; }
 
 		}
 		
+		// prints out "dis_array" to the OLED-display
 		display_print();
 
 		
 	}
 	
-	
+	//when game = 0, prints score and fills gamefiled with white blocks
 	screen_fill();
 	display_score();
 	display_print();
