@@ -55,8 +55,7 @@ uint8_t spi_send_recv(uint8_t data) {
 
 //written 2015 by F Lundevall
 void display_update(void) {
-  //int i, j, k;
-  //int c;
+
   int i;
   for(i = 0; i < 4; i++) {
     DISPLAY_CHANGE_TO_COMMAND_MODE;
@@ -68,14 +67,6 @@ void display_update(void) {
     
     DISPLAY_CHANGE_TO_DATA_MODE;
     
-   // for(j = 0; j < 16; j++) {
-      //c = textbuffer[i][j];
-     // if(c & 0x80)
-       // continue;
-      
-      //for(k = 0; k < 8; k++)
-      // spi_send_recv(font[c*8 + k]);
-    //}
   }
 }
 
@@ -160,6 +151,7 @@ void display_print() {
     }
 }
 
+// display the score on "dis_array" when the game is over
 void display_score()
 {
 
@@ -188,6 +180,7 @@ if(score != 0)
 
 }
 
+// uses pixel_set to set the correct pixel
 void display_digit2(uint8_t digit, uint8_t offset)
 {
   
