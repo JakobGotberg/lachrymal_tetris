@@ -178,27 +178,27 @@ uint8_t collision_check_left()
 	
 	if(!obj.ignore_left_cube1 && block_left(obj.r1,obj.b1))
 	{
-		//logic_to_pixel_set(1,1);
+		
 			return 1;
 	}
 	
 	if( !obj.ignore_left_cube2 && block_left(obj.r2,obj.b2) )
 	{
-		//logic_to_pixel_set(10,3);
+		
 			return 1;
 	}
 	
 
 	if( !obj.ignore_left_cube3 && block_left(obj.r3,obj.b3))
 	{
-		//logic_to_pixel_set(20,1);
+		
 			return 1;
 	}
 	
 
 	if( !obj.ignore_left_cube4 && block_left(obj.r4,obj.b4))
 	{
-		//logic_to_pixel_set(20,10);
+		
 			return 1;
 	}
 	
@@ -212,27 +212,27 @@ uint8_t collision_check_right()
 
 	if( !obj.ignore_right_cube1 && block_right(obj.r1,obj.b1))
 	{
-		//logic_to_pixel_set(1,1);
+		
 			return 1;
 	}
 	
 	if( !obj.ignore_right_cube2 && block_right(obj.r2,obj.b2) )
 	{
-		//logic_to_pixel_set(10,3);
+		
 			return 1;
 	}
 	
 
 	if( !obj.ignore_right_cube3 && block_right(obj.r3,obj.b3))
 	{
-		//logic_to_pixel_set(20,1);
+		
 			return 1;
 	}
 	
 
 	if( !obj.ignore_right_cube4 && block_right(obj.r4,obj.b4))
 	{
-		//logic_to_pixel_set(20,10);
+		
 			return 1;
 	}
 
@@ -277,7 +277,7 @@ uint8_t collision_check_down()
 void go_left()
 {
 	
-//&& !( collision_check_left() )
+
 	if((obj.left_cube != 10) && !( collision_check_left())) {
 		delete_shape();
 		obj.b1++;
@@ -298,7 +298,7 @@ void go_left()
 // goes rigth, once per btn-press, as long as there is no collision
 void go_right()
 {
-	//rightCollision = collision_check_right();
+	
 
 	if(obj.right_cube != 1 && !( collision_check_right() )) {
 		delete_shape();
@@ -335,44 +335,10 @@ void fall_down()
 	}
 
 }
-/*
+
 
 //in lack of a RNG (random number generator) we resorted to using a simpel list. 
 // This function returns the next shape to enter the gamefield.
-shape shape_handler(uint8_t s)
-{
-	switch(s)
-	{
-		case 1:
-			return O;
-			break;
-
-		case 2:
-			return L1;
-			break;
-
-		case 3:
-			return I1;
-			break;
-
-		case 4:
-			return J3;
-			break;
-
-		case 5:
-			return T0;
-			break;
-
-		case 6:
-			return Z0;
-			break;
-
-		case 7:
-			return S0;
-			break;
-	}
-}
-*/
 shape shape_handler(uint8_t s)
 {
 
@@ -527,6 +493,7 @@ void row_clear(uint8_t _row)
 	move_rows_down(_row);
 }
 
+// moves down cubes after clearing a row
 void move_rows_down(uint8_t clearedRow){
 	int i;
 	int p;
@@ -541,6 +508,7 @@ void move_rows_down(uint8_t clearedRow){
 	}
 }
 
+// fills row with cubes
 void row_fill(uint8_t _row)
 {
 	int i;
@@ -549,6 +517,7 @@ void row_fill(uint8_t _row)
 	}
 }
 
+//fills entire gamefield with cubes when the game is over
 void screen_fill()
 {
 	int i;
