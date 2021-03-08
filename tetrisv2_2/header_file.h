@@ -60,6 +60,7 @@ void enable_interrupt(void);
 
 typedef struct shape{
 
+   //ignore certian cubes in the shape when checking collision
    uint8_t ignore_down_cube1;
    uint8_t ignore_down_cube2;
    uint8_t ignore_down_cube3;
@@ -88,12 +89,13 @@ typedef struct shape{
    uint8_t r4;
    uint8_t b4;
 
+   //ex when bottom_cube == 20, it can't fall down anymore
    uint8_t bottom_cube;
    uint8_t left_cube;
    uint8_t right_cube;
 
 
-
+   //every shape has an index. A total of 19 shapes
    uint8_t shape_index;
 
 }shape;
@@ -124,9 +126,6 @@ extern shape I0;
 extern shape I1;
 
 extern shape temp;
-
-
-
 
 extern uint8_t new_shape_flag;
 
