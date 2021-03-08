@@ -33,13 +33,13 @@ T2CONCLR = 0x8000;
 TMR2 = 0;         
 
 // points to IFC(0)	
-
 volatile int* ifs_ptr = (volatile int*) 0xbf881030;  
 
+// checks input from buttons
 btn_check();
-//rotate_flag = 1;
 
 
+// a and b are locks, to prevent "dubble clicking", the buttons are very sensitive.
 if(rotate_flag || go_left_flag || go_right_flag)
 {
 	if(!a && b)
@@ -54,7 +54,7 @@ if(rotate_flag || go_left_flag || go_right_flag)
 	}
 }
 
-
+// timer 2 interrupt flag
 if((*ifs_ptr & 0x100) != 0)
 { 
 timeout_counter++;	
@@ -64,7 +64,7 @@ i++;
 }
 
 
-
+// again, a way to prevent dubble clicking
 if(index == 3)
 {
 	rotate_lock = 0;
